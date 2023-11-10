@@ -9,10 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import seleniumdemo.utils.SeleniumHelper;
 
-import java.time.Duration;
 import java.util.List;
 
 public class HotelSearchPage {
@@ -25,13 +23,13 @@ public class HotelSearchPage {
         this.webDriver = webDriver;
     }
 
-    @FindBy(xpath = "//span[text()='Search by Hotel or City Name']")
+    @FindBy(css = "[class=select2-choice]")
     private WebElement searchHotelSpan;
 
-    @FindBy(xpath = "//div[@id='select2-drop']//input")
+    @FindBy(css = "#select2-drop .select2-input")
     private WebElement searchHotelInput;
 
-    @FindBy(name = "checkIn")
+    @FindBy(name = "checkin")
     private WebElement checkIn;
 
     @FindBy(name = "checkout")
@@ -55,7 +53,7 @@ public class HotelSearchPage {
     @FindBy(xpath = "//a[text()='  Sign Up']")
     private List<WebElement> signUpLink;
 
-    @FindBy(xpath = "//a[@class='thm-btn btn-block']")
+    @FindBy(css = "[class='thm-btn btn-block']")
     private List<WebElement> bookingHotel;
 
     @FindBy(xpath = "//a[text()=' Login']")
