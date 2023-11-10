@@ -24,28 +24,28 @@ public class FlightSearchPage {
     @FindBy(xpath = "//span[contains(text(), 'Flights  ')]")
     private WebElement flightsButton;
 
-    @FindBy(xpath = "//*[@id='s2id_location_from']/a/span[1]")
+    @FindBy(css = "#s2id_location_from")
     private WebElement cityFromButton;
 
-    @FindBy(xpath = "//*[@id='select2-drop']/div/input")
+    @FindBy(xpath = "//div[@id='select2-drop']//input[@type='text']")
     private WebElement cityFromInput;
 
-    @FindBy(xpath = "//*[@id='select2-drop']/ul/li[1]/div")
+    @FindBy(css = "[class='select2-results-dept-0 select2-result select2-result-selectable']")
     private WebElement selectedCityButton;
 
-    @FindBy(xpath = "//*[@id='s2id_location_to']/a/span[1]")
+    @FindBy(css = "#s2id_location_to")
     private WebElement cityToButton;
 
-    @FindBy(xpath = "//*[@id='select2-drop']/div/input")
+    @FindBy(css = "#select2-drop .select2-input")
     private WebElement cityToInput;
 
-    @FindBy(xpath = "//*[@id='select2-drop']/ul/li[1]/div")
+    @FindBy(css = "[class='select2-results-dept-0 select2-result select2-result-selectable']")
     private WebElement selectedCityToButton;
 
     @FindBy(name = "departure")
     private WebElement depart;
 
-    @FindBy(xpath = "//*[@id='flights']/form/div[6]/button")
+    @FindBy(css = "[class='btn-primary btn btn-lg btn-block pfb0']")
     private WebElement searchButton;
 
     @FindBy(name = "arrival")
@@ -66,14 +66,12 @@ public class FlightSearchPage {
     @FindBy(id = "round")
     private WebElement roundTrip;
 
-    @FindBy(xpath = "//div[@class='iradio_square-grey checked']")
+    @FindBy(css = "[class='iradio_square-grey checked']")
     private WebElement oneWayTrip;
 
     @FindBy(id = "sumManualPassenger")
     private WebElement passengerButton;
 
-    @FindBy(xpath = "/html/body/div[14]/div[1]/table/thead/tr[1]/th[3]")
-    private WebElement nextMonth;
 
 
     public FlightSearchPage setFlight() {
@@ -105,7 +103,7 @@ public class FlightSearchPage {
     }
 
     public FlightSearchPage setDepartureDate() {
-        nextMonth.click();
+
         webDriver.findElements(By.xpath("//td[@class='day ' and contains(text(), '29')]"))
                 .stream()
                 .filter(WebElement::isDisplayed)

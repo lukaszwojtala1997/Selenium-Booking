@@ -18,7 +18,7 @@ public class BookingHotelPage {
         this.webDriver = webDriver;
     }
 
-    @FindBy(xpath = "//div[@class='panel-heading panel-green hidden-xs']")
+    @FindBy(css = "[class='panel-heading panel-green hidden-xs']")
     private WebElement details;
 
     @FindBy(name = "date")
@@ -36,13 +36,13 @@ public class BookingHotelPage {
     @FindBy(name = "infant")
     private WebElement infantSelect;
 
-    @FindBy(xpath = "//span[@class='totalCost']")
+    @FindBy(css = "[class='totalCost']")
     private WebElement totalCost;
 
     @FindBy(id = "signintab")
     private WebElement signIn;
 
-    @FindBy(xpath = "//button[@class='btn btn-block btn-lg btn-danger pull-right loader']")
+    @FindBy(css = "[class='btn btn-block btn-lg btn-danger pull-right loader']")
     private WebElement changeDateButton;
 
     @FindBy(name = "firstname")
@@ -54,7 +54,7 @@ public class BookingHotelPage {
     @FindBy(name = "email")
     private WebElement emailInput;
 
-    @FindBy(name = "confirmEmail")
+    @FindBy(name = "confirmemail")
     private WebElement confirmEmailInput;
 
     @FindBy(name = "phone")
@@ -72,7 +72,7 @@ public class BookingHotelPage {
     @FindBy(name = "guest")
     private WebElement confirmButton;
 
-    @FindBy(xpath = "//button[@class='btn btn-block btn-action btn-lg loader']")
+    @FindBy(css = "[class='btn btn-block btn-action btn-lg loader']")
     private WebElement bookNowButton;
 
     @FindBy(xpath = "//span[@class='select2-match']")
@@ -127,6 +127,7 @@ public class BookingHotelPage {
         return this;
     }
     public BookingHotelPage setConfirmEmail(String confirmEmail){
+        SeleniumHelper.waitForElementToBeClickable(webDriver, confirmEmailInput);
         confirmEmailInput.sendKeys(confirmEmail);
         return this;
     }
@@ -154,7 +155,7 @@ public class BookingHotelPage {
         return this;
     }
 
-    public BookingHotelPage fillPersonalDetails(String usernameData, String passwordData) throws InterruptedException {
+    public BookingHotelPage fillPersonalDetails(String usernameData, String passwordData){
         SeleniumHelper.waitForElementToBeClickable(webDriver, username);
         username.sendKeys(usernameData);
         SeleniumHelper.waitForElementToBeClickable(webDriver, password);
