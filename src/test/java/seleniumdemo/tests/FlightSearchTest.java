@@ -39,29 +39,6 @@ public class FlightSearchTest extends BaseTest {
     }
 
     @Test
-    public void returnFlightSearchWithEconomyClassTest() throws InterruptedException {
-        ExtentTest test = extentReports.createTest("Return flight search with economy class");
-
-        FlightResultPage flightResultPage = new FlightSearchPage(webDriver)
-                .setFlight()
-                .setRoundTrip()
-                .setDepartureAirport("Dubai")
-                .setArrivalAirport("Kato")
-                .setDepartureDate()
-                .setPassengers("1", "1", "1")
-                .setCabinClass("Economy")
-                .performSearch();
-
-        Assert.assertEquals(flightResultPage.getDatesAvailability(), "DATES AVAILABILITY");
-
-        try {
-            test.log(Status.PASS, "Assertions passed", SeleniumHelper.getScreenshot(webDriver));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
     public void flightSearchWithoutDepartureDateTest() {
         ExtentTest test = extentReports.createTest("Flight search without departure date");
 

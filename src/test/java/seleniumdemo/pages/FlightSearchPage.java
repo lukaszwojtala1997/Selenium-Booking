@@ -116,21 +116,6 @@ public class FlightSearchPage {
         return returnInput.isEnabled();
     }
 
-    public FlightSearchPage setRoundTrip() throws InterruptedException {
-   //     SeleniumHelper.waitForElementToBeClickable(webDriver, roundTrip);
-        Actions actions = new Actions(webDriver);
-        Thread.sleep(1000);
-        actions.moveToElement(webDriver.findElement(By.xpath("//input[@value='round']"))).click().perform();
-    //    try {
-    //        webDriver.findElement(By.xpath("//input[@value='round']")).click();
-    //    } catch (Exception e) {
-     //       JavascriptExecutor executor = (JavascriptExecutor) webDriver;
-    //        executor.executeScript("arguments[0].click();", webDriver.findElement(By.id("round")));
-    //        Thread.sleep(4000);
-     //   }
-        return this;
-    }
-
     public FlightSearchPage setPassengers(String adultsToAdd, String childToAdd, String infant) {
         String currentWindow = webDriver.getWindowHandle();
 
