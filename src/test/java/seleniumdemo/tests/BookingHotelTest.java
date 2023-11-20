@@ -50,7 +50,7 @@ public class BookingHotelTest extends BaseTest {
     }
 
     @Test
-    public void setBookingHotelBySignInTest() throws InterruptedException {
+    public void setBookingHotelBySignInTest(){
         ExtentTest test = extentReports.createTest("Set booking hotel by sign in");
 
         BookingHotelPage bookingHotelPage = new HotelSearchPage(webDriver)
