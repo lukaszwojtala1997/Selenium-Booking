@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import seleniumdemo.pages.HotelSearchPage;
 import seleniumdemo.pages.LoggedUserPage;
 import seleniumdemo.pages.ResultsPage;
+import seleniumdemo.utils.DriverFactory;
 import seleniumdemo.utils.SeleniumHelper;
 
 import java.io.IOException;
@@ -26,8 +27,6 @@ public class LoginTest extends BaseTest{
         return data;
     }
 
-
-
     @Test(dataProvider = "getData")
     public void logInTest(String username, String password){
         ExtentTest test = extentReports.createTest("LogIn");
@@ -44,7 +43,7 @@ public class LoginTest extends BaseTest{
     }
 
     @Test
-    public void addHotelToWishlistWhenUserIsLoggedTest(){
+    public void addHotelToWishlistWhenUserIsLoggedTest() {
         ExtentTest test = extentReports.createTest("Add hotel to wish list when user is logged");
 
         LoggedUserPage loginUserPage = new HotelSearchPage(webDriver)
@@ -61,30 +60,35 @@ public class LoginTest extends BaseTest{
 
         Assert.assertEquals(loginUserPage.getHotelName(), "Jumeirah Beach Hotel");
 
-        try {
-            test.log(Status.PASS, "Assertions passed", SeleniumHelper.getScreenshot(webDriver));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void addHotelToWishlistWhenUserIsNoLoggedTest() {
-        ExtentTest test = extentReports.createTest("Add hotel to wish when user is no logged");
-
-        ResultsPage loginUserPage = new HotelSearchPage(webDriver)
+        ResultsPage loginUserPage2 = new LoggedUserPage(webDriver)
+                .backToHomePage()
                 .setCity("Dubai")
                 .setDates("25/05/2023", "27/05/2023")
                 .setTravellers(1, 2)
                 .performSearch()
                 .addHotelToWishlist();
-
-        Assert.assertEquals(loginUserPage.getAlertText(), "Please Login to add to wishlist.");
-
         try {
             test.log(Status.PASS, "Assertions passed", SeleniumHelper.getScreenshot(webDriver));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    @Test
+    public void addHotelToWishlistWhenUserIsNoLoggedTest()  {
+        ExtentTest test = extentReports.createTest("Add hotel to wish when user is no logged");
+
+        String loginUserPage = new HotelSearchPage(webDriver)
+                .setCity("Dubai")
+                .setDates("25/05/2023", "27/05/2023")
+                .setTravellers(1, 2)
+                .performSearch()
+                .addHotelToWishlist()
+                .getAlertText();
+
+
+        Assert.assertEquals(loginUserPage, "Please Login to add to wishlist.");
+
     }
 }
