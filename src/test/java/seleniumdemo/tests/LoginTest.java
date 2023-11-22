@@ -79,7 +79,9 @@ public class LoginTest extends BaseTest{
                 .performSearch()
                 .addHotelToWishlist();
 
-        Assert.assertEquals(loginUserPage.getAlertText(), "Please Login to add to wishlist.");
+                String alertText = loginUserPage.getAlertText();
+
+        Assert.assertEquals(alertText, "Please Login to add to wishlist.");
 
         try {
             test.log(Status.PASS, "Assertions passed", SeleniumHelper.getScreenshot(webDriver));
