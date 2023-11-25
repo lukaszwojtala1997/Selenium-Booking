@@ -20,7 +20,7 @@ public class LoggedUserPage extends BaseTest {
     @FindBy(css = "[class='RTL']")
     private WebElement headingText;
 
-    @FindBy(xpath = "//li[@class='text-center go-right']")
+    @FindBy(css = "[class='text-center go-right']")
     private WebElement homeButton;
 
     @FindBy(xpath = "//a[@onclick='mySelectUpdate()']")

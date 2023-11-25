@@ -66,7 +66,7 @@ public class ResultsPage {
             JavascriptExecutor executor = (JavascriptExecutor) webDriver;
             executor.executeScript("arguments[0].click();", webDriver.findElement(By.cssSelector("[class='tooltip_flip tooltip-effect-1']")));
         }
-        return new ResultsPage(webDriver);
+        return this;
     }
 
     public LoggedUserPage openLoginForm() {
